@@ -4,6 +4,7 @@ Name: Jasson Didhi Kumala
 This program will load a list of items from books
 User can choose to check required books, completed books, add new books and mark a book as completed.
 The program will end by saving all the current situation to book.csv.
+https://github.com/jc425676/JassonDidhiKumalaA1
 """
 
 
@@ -12,14 +13,14 @@ FILENAME = "books.csv"
 file_list = []
 list_books=[]
 
-def count():
+def count():#this function counts the number of books with the given criteria 'r'
     books = 0
     file = open("books.csv", "r")
     for x in range(0, len(file_list)):
         books += 1
     return books
 
-def inputChoice(option):
+def inputChoice(option): #this function is will check what the user enter for the options given
     option = option.upper()
     while option != "R" and option != "C" and option != "A" and option != "M" and option != "Q":
         print("Invalid Choice")
@@ -30,7 +31,7 @@ def inputChoice(option):
 
 
 
-def main():
+def main():#the main function will let the user enter the option
     read_file()
     while True:
         print("""Reading List 1.0 - by Jasson Didhi Kumala\n{} books loaded from books.csv""".format(len(file_list)))
@@ -65,7 +66,7 @@ def main():
 
 
 
-def list_required_books():
+def list_required_books(): #this function will check the required books in the csv file
     page = 0
     count = 0
     for index, data in enumerate(file_list):
@@ -77,7 +78,7 @@ def list_required_books():
 
 
 
-def list_completed_books():
+def list_completed_books(): #this function will check the completed books in the csv file
     page = 0
     count = 0
     for index, data in enumerate(file_list):
@@ -88,7 +89,7 @@ def list_completed_books():
     print("Total pages for {} book(s): {} pages".format(count, page))
 
 
-def add_new_book():
+def add_new_book(): #this function will add neww books
     while True:
         title = input("Title: ")
         if len(title)<1:
@@ -128,7 +129,7 @@ def add_new_book():
 
 
 
-def mark_a_book():
+def mark_a_book(): #this function will mark books complete
     list_required_books()
     count_total_books=int(count())
     if count ==0:
@@ -151,7 +152,7 @@ def mark_a_book():
             print("")
 
 
-def read_file():
+def read_file(): #this function reads the item in the csv file
     global file_list
     file_pointer= open(FILENAME, "r")
     for  data in file_pointer.readlines():
