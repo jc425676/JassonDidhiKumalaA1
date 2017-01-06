@@ -88,38 +88,38 @@ def list_completed_books(): #this function will check the completed books in the
 
 def add_new_book(): #this function will add new books
     while True:
-        title = input("Title: ")
-        if len(title)<1:
-            print("Input blank")
+        title = input("Title: ")#user input title
+        if len(title)<1:#if title is less than 1 word
+            print("Input blank")#display Input blank
         else:
             break
     while True:
-        author = input("Author: ")
-        if len(author)<1:
-            print("Input blank")
+        author = input("Author: ")#user input author
+        if len(author)<1:#if title is less than 1 word
+            print("Input blank")#display Input blank
         else:
             break
     while True:
         try:
-            page_number = int(input("Number of pages: "))
-            if page_number < 0:
-                print("Invalid page number")
+            page_number = int(input("Number of pages: "))#user input page number
+            if page_number < 0: #if input is less than 1
+                print("Invalid page number")#display invalid page number
             else:
                 break
         except ValueError:
             print("Enter a valid page number")
-    list_books.append(title)
-    list_books.append(author)
-    list_books.append(page_number)
-    list_books.append("r")
-    file_list.append(list_books)
-    file_list.sort(key=itemgetter(1, 2))
+    list_books.append(title)#title append to list_books
+    list_books.append(author)#author append to list_books
+    list_books.append(page_number)#page number append to list_books
+    list_books.append("r")# r append to list_books
+    file_list.append(list_books)#list_books append to file_list
+    file_list.sort(key=itemgetter(1, 2))#file_list sort
     print("{} By {}, ({} Pages) added to the reading list.".format(title, author,page_number))
 
 
 
 def mark_a_book(): #this function will mark books complete
-    list_required_books()
+    list_required_books()#call list_required_books
     if count ==0:
         print("Required Books:\n No Books")
     else:
