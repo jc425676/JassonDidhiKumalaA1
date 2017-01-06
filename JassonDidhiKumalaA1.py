@@ -87,6 +87,36 @@ def list_completed_books(): #this function will check the completed books in the
 
 
 def add_new_book(): #this function will add new books
+    """
+while true
+    user input title
+    if title length is less than 1
+        display input blank
+    else
+        break
+    while true
+        user input author
+        if author length is less than 1
+            display input blank
+        else
+            break
+    while true
+        try
+            user input page_number integer
+            if page_number is less than 1
+                display invalid page number
+            else
+                break
+        except ValueError
+            display Please enter a valid page number
+list_books.append(title)
+list_books.append(author)
+list_books.append(page_number)
+list_books.append("r")
+file_list.append(list_books)
+file_list.sort(key=itemgetter(1, 2))
+display ("{} By {}, ({} Pages) added to the reading list.".format(title, author,page_number))
+    """
     while True:
         title = input("Title: ")#user input title
         if len(title)<1:#if title is less than 1 word
@@ -119,6 +149,27 @@ def add_new_book(): #this function will add new books
 
 
 def mark_a_book(): #this function will mark books complete
+    """
+    call function list_required_books
+    if count is equal to 0
+        display ("Required Books:\n No Books")
+    else
+        display Enter the number of a book to mark as completed
+    while true
+        try
+            input mark
+            break
+        except ValueError
+            display Invalid input; enter a valid number
+    for index , each in enumerate(file_list)
+        if index = mark
+            if each[3] == "r"
+            each[3] = "c"
+            display("{} by {} marked as completed".format(each[0], each[1]))
+        else
+            display That book is already completed
+
+    """
     list_required_books()#call list_required_books
     if count ==0:
         print("Required Books:\n No Books")
