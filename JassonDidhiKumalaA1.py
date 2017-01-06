@@ -11,7 +11,7 @@ https://github.com/jc425676/JassonDidhiKumalaA1
 from operator import itemgetter
 FILENAME = "books.csv"
 file_list = []
-list_books=[]
+list_books = []
 
 def count():#this function counts the number of books with the given criteria 'r'
     books = 0
@@ -32,27 +32,27 @@ def inputChoice(option): #this function is will check what the user enter for th
 
 
 def main():#the main function will let the user enter the option
-    read_file()
+    read_file() #call function from read file
     while True:
-        print("""Reading List 1.0 - by Jasson Didhi Kumala\n{} books loaded from books.csv""".format(len(file_list)))
+        print("""Reading List 1.0 - by Jasson Didhi Kumala\n{} books loaded from books.csv""".format(len(file_list))) #display number of books from the csv file
         print("Menu:\nR - List required books\nC - List completed books\nA - Add new book\nM - Mark a book as completed\nQ - Quit")
-        option = input(">>>")
-        option = option.upper()
+        option = input(">>>") #user input
+        option = option.upper() #user input uppercase
         while option != "R" and option != "C" and option != "A" and option != "M" and option != "Q":
             print("Invalid Choice")
             print(
                 "Menu:\nR - List required books\nC - List completed books\nA - Add new book\nM - Mark a book as completed\nQ - Quit")
             option = input(">>>")
             option.upper()
-        if option == "R":
+        if option == "R": #if optionrun  is equal to R function will run the function list_required_books
             list_required_books()
-        if option == "C":
+        if option == "C":#if optionrun  is equal to C function will run the function list_completed_books
             list_completed_books()
-        if option == "A":
+        if option == "A":#if optionrun  is equal to A function will run the function add_new_book
             add_new_book()
-        if option == "M":
+        if option == "M":#if optionrun  is equal to M function will run the function mark_a_book
             mark_a_book()
-        if option== "Q":
+        if option== "Q":#if optionrun  is equal to Q it will quit the program and display total books on csv file
             print("{} books saved to books.csv".format(len(file_list)))
             print("Have a nice day!")
             file_write = open("books.csv", "w")
@@ -63,14 +63,11 @@ def main():#the main function will let the user enter the option
             break
 
 
-
-
-
 def list_required_books(): #this function will check the required books in the csv file
-    page = 0
+    page = 0 #declare the variable to count the totl page
     count = 0
     for index, data in enumerate(file_list):
-        if data[3] =="r":
+        if data[3] =="r":#if the data in the list is r it will display the book
             print(index, "{:40s} by {:20s} {} pages".format(data[0], data[1], data[2]))
             page += int(data[2])
             count += 1
@@ -82,14 +79,14 @@ def list_completed_books(): #this function will check the completed books in the
     page = 0
     count = 0
     for index, data in enumerate(file_list):
-        if data[3] =="c":
+        if data[3] =="c":#if the data in the list is c it will display the book
             print(index, "{:40s} by {:20s} {} pages".format(data[0], data[1], data[2]))
             page += int(data[2])
             count += 1
     print("Total pages for {} book(s): {} pages".format(count, page))
 
 
-def add_new_book(): #this function will add neww books
+def add_new_book(): #this function will add new books
     while True:
         title = input("Title: ")
         if len(title)<1:
@@ -121,17 +118,8 @@ def add_new_book(): #this function will add neww books
 
 
 
-
-
-
-
-
-
-
-
 def mark_a_book(): #this function will mark books complete
     list_required_books()
-    count_total_books=int(count())
     if count ==0:
         print("Required Books:\n No Books")
     else:
@@ -155,11 +143,11 @@ def mark_a_book(): #this function will mark books complete
 def read_file(): #this function reads the item in the csv file
     global file_list
     file_pointer= open(FILENAME, "r")
-    for  data in file_pointer.readlines():
+    for data in file_pointer.readlines():
         data = data.strip()
         datum = data.split(",")
         file_list.append(datum)
-    file_list.sort(key=itemgetter(1,2))
+        file_list.sort(key=itemgetter(1,2))
     file_pointer.close()
     return file_list
 
